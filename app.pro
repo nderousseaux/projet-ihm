@@ -29,13 +29,17 @@ INCLUDEPATH += $${INCLUDE_DIR} $${INCLUDE_WIDGETS_DIR}
 VPATH += $${SRC_DIR} $${SRC_WIDGETS_DIR} $${INCLUDE_DIR} $${INCLUDE_WIDGETS_DIR} $${UI_DIR}
 
 SOURCES += \
+	src/CompareColorPair.cpp \
 	mainwindow.cpp \
 	main.cpp \
-	src/ColorPair.cpp
+	src/ColorPair.cpp \
+	src/XmlReader.cpp
 
 HEADERS += \
 	include/ColorPair.h \
-	mainwindow.h
+	include/CompareColorPair.h \
+	mainwindow.h \
+	include/XmlReader.h
 
 FORMS += \
 	mainwindow.ui

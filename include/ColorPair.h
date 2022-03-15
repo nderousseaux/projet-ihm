@@ -8,11 +8,21 @@
 class ColorPair
 {
    public:
+        //Constructeurs
         ColorPair(); //constructeur vide
         ColorPair(const ColorPair &color); //con. par copie
-        ColorPair(const QString &id, const QColor &color1, const QColor &color2);
+        ColorPair(const QString &id, const QColor &source, const QColor &target);
         ColorPair(const QString &id); //con. initialisant uniquement l’identifiant
 
+        //Accesseurs
+        QString getId();
+        QColor getSource();
+        QColor getTarget();
+        void setId(QString id);
+        void setSource(QColor source);
+        void setTarget(QColor target);
+
+        //Méthodes statiques
         static QString toRGBA(const QColor &color);
         static QColor fromRGBA(const QString &colorStr);
 

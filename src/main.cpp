@@ -1,10 +1,14 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include <iostream>
+using namespace std;
 
-int main(int argc, char *argv[])
+#include "../include/ColorPair.h"
+#include "../include/CompareColorPair.h"
+#include "../include/XmlReader.h"
+
+int main()
 {
-	QApplication a(argc, argv);
-	MainWindow w;
-	w.show();
-	return a.exec();
+    XMLReader reader = XMLReader();
+    reader.read("/Users/nderousseaux/Documents/etudes/ecole/superieur/l3_info/s6/ihm_interaction_homme_machine/ihm_tps/exemple_themes/darkTheme.xml");
 }
