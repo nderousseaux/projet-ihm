@@ -1,4 +1,4 @@
-#include "../include/CompareColorPair.h"
+#include "comparecolorpair.h"
 
 CompareColorPair::CompareColorPair(){}
 

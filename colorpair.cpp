@@ -1,4 +1,4 @@
-#include "../include/ColorPair.h"
+#include "colorpair.h"
 
 ColorPair::ColorPair(){}
 ColorPair::ColorPair(const ColorPair &color){ m_id = color.m_id; m_source = color.m_source; m_target = color.m_target; }
@@ -20,5 +20,6 @@ QString ColorPair::toRGBA(const QColor &color)
 
 QColor ColorPair::fromRGBA(const QString &colorStr)
 {
+
     return QColor(colorStr);
 }

@@ -1,7 +1,7 @@
 #ifndef COMPARECOLORPAIR_H
 #define COMPARECOLORPAIR_H
 
-#include "./ColorPair.h"
+#include "colorpair.h"
 
 class CompareColorPair
 {

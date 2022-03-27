@@ -29,17 +29,21 @@ INCLUDEPATH += $${INCLUDE_DIR} $${INCLUDE_WIDGETS_DIR}
 VPATH += $${SRC_DIR} $${SRC_WIDGETS_DIR} $${INCLUDE_DIR} $${INCLUDE_WIDGETS_DIR} $${UI_DIR}
 
 SOURCES += \
-	src/CompareColorPair.cpp \
+	colorpair.cpp \
+	comparecolorpair.cpp \
 	mainwindow.cpp \
 	main.cpp \
-	src/ColorPair.cpp \
-	src/XmlReader.cpp
+	theme.cpp \
+	themes.cpp \
+	xmlreader.cpp
 
 HEADERS += \
-	include/ColorPair.h \
-	include/CompareColorPair.h \
+    colorpair.h \
+    comparecolorpair.h \
 	mainwindow.h \
-	include/XmlReader.h
+    theme.h \
+    themes.h \
+    xmlreader.h
 
 FORMS += \
 	mainwindow.ui
@@ -48,3 +52,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    ui/ressources.qrc
