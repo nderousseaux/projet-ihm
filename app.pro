@@ -29,24 +29,35 @@ INCLUDEPATH += $${INCLUDE_DIR} $${INCLUDE_WIDGETS_DIR}
 VPATH += $${SRC_DIR} $${SRC_WIDGETS_DIR} $${INCLUDE_DIR} $${INCLUDE_WIDGETS_DIR} $${UI_DIR}
 
 SOURCES += \
-	colorpair.cpp \
-	comparecolorpair.cpp \
-	mainwindow.cpp \
-	main.cpp \
-	theme.cpp \
-	themes.cpp \
-	xmlreader.cpp
+    src/widgets/clickablewidget.cpp \
+    src/widgets/importwindow.cpp \
+    src/widgets/selectedthemewidget.cpp \
+    src/widgets/themeitemwidget.cpp \
+    src/widgets/mainwindow.cpp \
+    src/colorpair.cpp \
+    src/comparecolorpair.cpp \
+    src/main.cpp \
+    src/theme.cpp \
+    src/themes.cpp \
+    src/xmlreader.cpp
 
 HEADERS += \
-    colorpair.h \
-    comparecolorpair.h \
-	mainwindow.h \
-    theme.h \
-    themes.h \
-    xmlreader.h
+    src/widgets/clickablewidget.h \
+    src/widgets/importwindow.h \
+    src/widgets/selectedthemewidget.h \
+    src/widgets/themeitemwidget.h \
+    src/widgets/mainwindow.h \
+    src/colorpair.h \
+    src/comparecolorpair.h \
+    src/theme.h \
+    src/themes.h \
+    src/xmlreader.h
 
 FORMS += \
-	mainwindow.ui
+    ui/selectedthemewidget.ui \
+    ui/importwindow.ui \
+    ui/themeitemwidget.ui \
+    ui/mainwindow.ui \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

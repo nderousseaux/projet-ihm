@@ -1,0 +1,29 @@
+QScrollBar:vertical{
+    background-color: transparent;
+    width: 15px;
+    margin: 3px;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical
+{
+    background-color: rgb(200,200,200);         /* #605F5F; */
+    min-height: 5px;
+    border-radius: 4px;
+}
+QScrollBar::handle:vertical:hover
+{
+    background-color: rgb(123,123,123);         /* #605F5F; */
+    
+}
+
+QScrollBar::sub-line:vertical
+{
+    border-image: url(:/qss_icons/rc/up_arrow_disabled.png);
+}
+
+QScrollBar::add-line:vertical
+{
+    border-image: url(:/qss_icons/rc/down_arrow_disabled.png);
+}
+

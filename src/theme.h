@@ -6,14 +6,19 @@
 
 class Theme{
     public:
-        Theme(QString name);
-        Theme(QString name, QString file_path);
+        Theme(QString name); //On crée un nouveau thème.
+        Theme(QString name, QString file_path); //Theme a partir d'un fichier source
+        Theme(QString name, QString file_path, bool isInterne); //Theme a partir d'un xml
 
         //Accesseurs
         QList<ColorPair> getColorsPair();
         void addColorPair(ColorPair colorPair);
         QString getName();
         void setName(QString name);
+        bool getIsSave();
+        void setIsSave(bool save);
+        bool getSelected();
+        void setSelected(bool selected);
 
         //Méthodes d'instances
         void save();
@@ -21,6 +26,8 @@ class Theme{
     private:
         QList<ColorPair> m_colorsPair;
         QString m_name;
+        bool m_isSave;
+        bool m_selected;
 };
 
 #endif // THEME_H

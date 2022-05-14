@@ -1,4 +1,5 @@
-#include "mainwindow.h"
+#include "widgets/mainwindow.h"
+#include "xmlreader.h"
 #include <QApplication>
 #include <iostream>
 #include <QList>
@@ -11,6 +12,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    XMLReader::createSavePath();
     //Affichage de la fenêtre
     QApplication a(argc, argv);
     MainWindow w;

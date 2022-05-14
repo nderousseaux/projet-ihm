@@ -10,13 +10,19 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>780</width>
+    <height>480</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Gestionnaire de thèmes</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,5">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <property name="spacing">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="leftMargin">
      <number>0</number>
@@ -31,260 +37,215 @@
      <number>0</number>
     </property>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,20,3">
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(226, 223, 223);</string>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Themes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="margin">
-         <number>10</number>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QListWidget" name="listWidget">
-        <property name="styleSheet">
-         <string notr="true">QListWidget::item:selected {
-	background-image: url(:/src/list-background);
-	color: black;
-}
-QListWidget QWidget[widgetItem=true] {
-	background: transparent;
-}</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QPushButton" name="pushButton">
-          <property name="text">
-           <string>New theme</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="text">
-           <string>Import theme</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="text">
-           <string>Save all themes</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QStackedWidget" name="stackedWidget">
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(226, 223, 223);</string>
-        </property>
-        <widget class="QWidget" name="page"/>
-        <widget class="QWidget" name="page_2">
+     <widget class="QWidget" name="widget" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,4">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="widget_4" native="true">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(226, 223, 223);</string>
+          <string notr="true">*&gt;*{
+	background-color: rgb(249, 249, 249);
+}
+
+
+
+</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,1,10">
+         <layout class="QVBoxLayout" name="verticalLayout" stretch="2,10,3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
-           <widget class="QWidget" name="widget_5" native="true">
-            <widget class="QPushButton" name="pushButton_4">
-             <property name="geometry">
-              <rect>
-               <x>570</x>
-               <y>10</y>
-               <width>100</width>
-               <height>32</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Close</string>
-             </property>
-            </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-right: 1px solid rgb(205, 205, 205);</string>
+            </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;Importer un theme&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Themes List&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="margin">
+             <number>15</number>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1,1">
-             <property name="spacing">
-              <number>-1</number>
+           <widget class="QScrollArea" name="listTheme">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>300</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">#listTheme{
+border-right:1px solid rgb(205,205,205);
+
+}
+</string>
+            </property>
+            <property name="verticalScrollBarPolicy">
+             <enum>Qt::ScrollBarAsNeeded</enum>
+            </property>
+            <property name="horizontalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
+            </property>
+            <property name="widgetResizable">
+             <bool>true</bool>
+            </property>
+            <widget class="QWidget" name="container">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>167</width>
+               <height>420</height>
+              </rect>
              </property>
-             <property name="leftMargin">
-              <number>50</number>
+             <property name="styleSheet">
+              <string notr="true"/>
              </property>
-             <property name="rightMargin">
-              <number>50</number>
-             </property>
-             <property name="bottomMargin">
-              <number>100</number>
-             </property>
-             <item>
-              <widget class="QWidget" name="widget_4" native="true">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 255, 255);</string>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_7" stretch="10,5,5,0">
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <layout class="QVBoxLayout" name="layout_list_theme">
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <item>
-                 <widget class="QWidget" name="widget_6" native="true">
-                  <property name="autoFillBackground">
-                   <bool>false</bool>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">border-image: url(:/src/import.png) 0 0 0 0 stretch stretch;
-</string>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_3"/>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_7">
-                  <property name="text">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Depuis un fichier&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_8">
-                  <property name="text">
-                   <string>Sélectionnez un dossier ou un fichier et générez un thème source à partir des couleurs présentes</string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_6">
-                  <property name="text">
-                   <string>Select</string>
-                  </property>
-                 </widget>
-                </item>
                </layout>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_5" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">#widget_5{
+	border-right: 1px solid rgb(205, 205, 205);
+}
+*&gt;QPushButton{
+	background-color: rgb(249, 249, 249);
+	border:1px solid  rgb(41, 105, 188);
+	height:auto;
+	color:rgb(41, 105, 188);
+	border-radius:5px;
+}
+*&gt;QPushButton:hover{
+	background-color: rgb(41, 105, 188);
+	border:1px solid  rgb(41, 105, 188);
+	height:auto;
+	color:rgb(249, 249, 249);
+	border-radius:5px;
+}</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <property name="sizeConstraint">
+              <enum>QLayout::SetDefaultConstraint</enum>
+             </property>
+             <property name="topMargin">
+              <number>10</number>
+             </property>
+             <property name="bottomMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="btn_new_theme">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>New theme</string>
+               </property>
               </widget>
              </item>
              <item>
-              <widget class="QWidget" name="widget_3" native="true">
-               <property name="enabled">
-                <bool>false</bool>
+              <widget class="QPushButton" name="btn_import_theme">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 255, 255);</string>
+                <string notr="true"/>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_6" stretch="10,5,5">
-                <item>
-                 <widget class="QWidget" name="widget_7" native="true">
-                  <property name="styleSheet">
-                   <string notr="true">border-image: url(:/src/link.png) 0 0 0 0 stretch stretch;
-</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_6">
-                  <property name="text">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Depuis internet&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_5">
-                  <property name="text">
-                   <string>Importez un thème depuis une ressource internet.</string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+               <property name="text">
+                <string>Import theme</string>
+               </property>
               </widget>
              </item>
              <item>
-              <widget class="QWidget" name="widget_2" native="true">
-               <property name="enabled">
-                <bool>true</bool>
+              <widget class="QPushButton" name="btn_save_all">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
                </property>
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 255, 255);</string>
+               <property name="text">
+                <string>Save all</string>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_5" stretch="10,5,5,0">
-                <item>
-                 <widget class="QWidget" name="widget_8" native="true">
-                  <property name="styleSheet">
-                   <string notr="true">border-image: url(:/src/xml.png) 0 0 0 0 stretch stretch;
-</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_4">
-                  <property name="text">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Depuis un fichier xml&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_3">
-                  <property name="text">
-                   <string>Importez un thème depuis un fichier theme au format xml.</string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_5">
-                  <property name="text">
-                   <string>Select</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
               </widget>
              </item>
             </layout>
@@ -292,9 +253,17 @@ QListWidget QWidget[widgetItem=true] {
           </item>
          </layout>
         </widget>
-       </widget>
-      </item>
-     </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="selected_theme" native="true">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </item>
    </layout>
   </widget>
