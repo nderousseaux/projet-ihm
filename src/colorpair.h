@@ -24,6 +24,7 @@ class ColorPair
 
         //Méthodes statiques
         static QString toRGBA(const QColor &color);
+        static QString toRGB(const QColor &color);
         static QColor fromRGBA(const QString &colorStr);
         QString m_id;
 

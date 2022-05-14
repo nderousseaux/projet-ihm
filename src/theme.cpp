@@ -24,12 +24,12 @@ Theme::Theme(QString name, QString file_path, bool isInterne){
     m_selected = false;
 }
 
-QList<ColorPair> Theme::getColorsPair(){
+QList<ColorPair*> Theme::getColorsPair(){
     return m_colorsPair;
 }
-void Theme::addColorPair(ColorPair colorPair){
-    foreach(ColorPair cp, m_colorsPair){
-        if(cp.getSource() == colorPair.getSource()) return;
+void Theme::addColorPair(ColorPair *colorPair){
+    foreach(ColorPair *cp, m_colorsPair){
+        if(cp->getSource() == colorPair->getSource()) return;
     }
     m_colorsPair.append(colorPair);
 }
@@ -53,4 +53,12 @@ bool Theme::getSelected(){
 }
 void Theme::setSelected(bool selected){
     m_selected = selected;
+}
+bool Theme::isPresent(QList<ColorPair*>res, QString color){
+    foreach(ColorPair *c, res){
+        if(!QString::compare(ColorPair::toRGBA(c->getSource()), color)){
+            return true;
+        }
+    }
+    return false;
 }

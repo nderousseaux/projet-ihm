@@ -18,6 +18,7 @@ class Themes{
 
         void saveAll();
         QList<Theme *> importAll();
+        void deleteTheme(Theme* t);
 
     private:
         QList<Theme *> m_themes;

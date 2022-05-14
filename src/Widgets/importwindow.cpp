@@ -10,6 +10,7 @@ Import_window::Import_window(QWidget *parent, Themes* themes) :QDialog(parent),u
     ui->setupUi(this);
 
     connect(ui->div_import_file, SIGNAL(mouseReleased()), this, SLOT(import_file_clicked()));
+    connect(ui->div_import_source, SIGNAL(mouseReleased()), this, SLOT(import_source_clicked()));
 }
 
 //Destructeur
@@ -27,6 +28,20 @@ void Import_window::import_file_clicked(){
     );
     if(path != ""){
         emit addTheme(path);
+        this->close();
+    }
+}
+
+//Choisi un theme source
+void Import_window::import_source_clicked(){
+    QString path = QFileDialog::getOpenFileName(
+        this,
+        tr("Select file to import"),
+        nullptr,
+        "All files (*.*)"
+    );
+    if(path != ""){
+        emit addThemeSrc(path);
         this->close();
     }
 }

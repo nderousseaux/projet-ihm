@@ -24,9 +24,12 @@ public:
 public slots:
     //Importer un thème à partir d'un XML
     void import_theme_xml(QString path);
+    void import_theme_src(QString path);
 
     //On clique sur un thème
     void select_theme(Theme* t);
+    void selected_theme_update();
+    void delete_theme(Theme *t);
 
 private:
 	Ui::MainWindow *ui;

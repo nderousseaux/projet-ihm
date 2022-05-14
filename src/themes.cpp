@@ -61,3 +61,18 @@ QList<Theme *> Themes::importAll(){
     }
     return getThemes();
 }
+
+//Supprimer un thème
+void Themes::deleteTheme(Theme* t){
+    int idx = 0;
+    int i=0;
+    foreach(Theme * th, m_themes){
+        if(th == t){
+            idx=i;
+        }
+        i++;
+    }
+    //On supprime le fichier egalemment
+    XMLReader::deleteFile(t->getName());
+    m_themes.removeAt(idx);
+}

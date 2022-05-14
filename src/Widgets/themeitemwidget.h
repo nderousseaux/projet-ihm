@@ -14,6 +14,7 @@ class themeItemWidget : public QWidget
 public:
     explicit themeItemWidget(QWidget *parent = nullptr, Theme* theme = nullptr);
     ~themeItemWidget();
+    Theme * getTheme();
 
 public slots:
     void update();

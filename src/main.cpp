@@ -12,9 +12,16 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    QString style = "";
+    QFile file(":/css/ressources/button.css");
+    if(file.open(QIODevice::ReadOnly))
+        style= file.readAll();
+    file.close();
+
     XMLReader::createSavePath();
     //Affichage de la fenêtre
     QApplication a(argc, argv);
+    a.setStyleSheet(style);
     MainWindow w;
     w.show();
     return a.exec();

@@ -17,6 +17,7 @@ public:
     ~Import_window();
 public slots:
     void import_file_clicked();
+    void import_source_clicked();
 private:
     Ui::Import_window *ui;
     Themes *m_themes;
@@ -24,5 +25,6 @@ private:
 signals:
     //Mettre à jour la liste des thèmes
     void addTheme(QString path);
+    void addThemeSrc(QString path);
 };
 #endif // IMPORT_WINDOW_H

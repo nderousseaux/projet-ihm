@@ -19,9 +19,23 @@ public:
 public slots:
     void update(Theme *t);
 
+private slots:
+    void on_save_btn_clicked();
+    void on_delete_btn_clicked();
+
+    void on_apply_btn_clicked();
+
 private:
     Ui::SelectedThemeWidget *ui;
     Theme* m_theme;
+    int idx_next_column = 0;
+
+    void addColorPair(ColorPair* cp);
+    void clearLayout(QLayout* l);
+
+signals:
+    void updateTheme();
+    void deleteTheme(Theme* t);
 };
 
 #endif // SELECTEDTHEMEWIDGET_H

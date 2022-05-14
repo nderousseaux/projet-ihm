@@ -35,7 +35,11 @@ void themeItemWidget::update(){
     }
 }
 
+Theme * themeItemWidget::getTheme(){
+    return m_theme;
+}
+
 //Click sur le widget
 void themeItemWidget::click(){
-    emit(theme_selected(m_theme));
+    emit theme_selected(m_theme);
 }

@@ -3,6 +3,13 @@
         <file>ressources/file.png</file>
         <file>ressources/link.png</file>
         <file>ressources/xml.png</file>
-        <file>ressources/styles.css</file>
+        <file>ressources/save.png</file>
+        <file>ressources/arrow.png</file>
+        <file>ressources/color_undefined.png</file>
+        <file>ressources/color_picker.png</file>
+    </qresource>
+    <qresource prefix="/css">
+        <file>ressources/scrollbar.css</file>
+        <file>ressources/button.css</file>
     </qresource>
 </RCC>

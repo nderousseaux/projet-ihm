@@ -63,7 +63,7 @@
 
 
 /*#widget_2 &gt; *:hover {*/
-#widget_2 &gt; #widget_7:hover {
+#widget_2 &gt; #widget_7:hover, #widget_2 &gt; #widget_9:hover {
 	background-color: rgb(217, 232, 251);
 	border: 2px solid rgb(41,105,188);
 }
@@ -208,9 +208,9 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="ClickableWidget" name="div_import_file_2" native="true">
+          <widget class="ClickableWidget" name="div_import_source" native="true">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
