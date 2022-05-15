@@ -50,8 +50,6 @@ void SelectedThemeWidget::update(Theme * t){
         ui->column_1->addStretch(1);
         ui->column_2->addStretch(1);
         ui->column_3->addStretch(1);
-
-        ui->update_btn->setVisible(!m_theme->getLink().isEmpty());
     }
 }
 
