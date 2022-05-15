@@ -152,15 +152,15 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="apply_btn">
+           <widget class="QPushButton" name="update_btn">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="text">
-             <string>Appliquer le thème</string>
+             <string>Mettre à jour le thème</string>
             </property>
            </widget>
           </item>
@@ -236,9 +236,11 @@ QPushButton:hover{
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">/*QPushButton:hover{
-	background-color: rgb(41, 105, 188);
-}*/</string>
+                   <string notr="true">QPushButton{
+	background-color: rgb(205,205,205);
+	border: 1px solid grey;
+	color: grey
+}</string>
                   </property>
                   <property name="text">
                    <string>Ajouter une paire</string>

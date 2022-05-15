@@ -32,11 +32,30 @@ Theme * Themes::newTheme(){
     return theme;
 }
 
-Theme * Themes::newThemeFromXML(QString path){
-    QFileInfo fi(path);
-    Theme * theme = new Theme(fi.baseName(), path, false);
+Theme * Themes::newThemeFromXML(QString file, QString name, bool isSave){
+    if(name == nullptr){
+        name = Themes::newName();
+    }
+    Theme * theme = new Theme(name, file, isSave);
     m_themes.append(theme);
     return theme;
+}
+
+Theme * Themes::newThemeFromXMLPath(QString path, bool isSave){
+    //On ouvre le fichier, et on lit son contenu
+    QFileInfo fi(path);
+    QString text;
+    QFile f(path);
+    //On ouvre le fichier
+    if (!f.open(QIODevice::ReadOnly | QIODevice::Text)){
+        QMessageBox messageBox;
+        messageBox.critical(0,"Error","An error has occured !");
+        throw std::invalid_argument("Unable to open file" );
+
+    }
+    text = f.readAll();
+    f.close();
+    return this->newThemeFromXML(text, fi.baseName(), isSave);
 }
 
 Theme * Themes::newThemeFromFile(QString path){
@@ -56,8 +75,7 @@ QList<Theme *> Themes::importAll(){
     QStringList xml = directory.entryList(QStringList() << "*.xml" << "*.xml",QDir::Files);
     foreach(QString filename, xml) {
         QString path = XMLReader::basePath + filename;
-        QFileInfo fi(path);
-        m_themes.append(new Theme(fi.baseName(), path, true));
+        this->newThemeFromXMLPath(path, true);
     }
     return getThemes();
 }

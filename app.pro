@@ -31,6 +31,7 @@ VPATH += $${SRC_DIR} $${SRC_WIDGETS_DIR} $${INCLUDE_DIR} $${INCLUDE_WIDGETS_DIR}
 SOURCES += \
     src/widgets/clickablewidget.cpp \
     src/widgets/colorpairwidget.cpp \
+    src/filedownloader.cpp \
     src/widgets/importwindow.cpp \
     src/widgets/selectedthemewidget.cpp \
     src/widgets/themeitemwidget.cpp \
@@ -45,6 +46,7 @@ SOURCES += \
 HEADERS += \
     src/widgets/clickablewidget.h \
     src/widgets/colorpairwidget.h \
+    src/filedownloader.h \
     src/widgets/importwindow.h \
     src/widgets/selectedthemewidget.h \
     src/widgets/themeitemwidget.h \

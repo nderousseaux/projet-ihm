@@ -6,6 +6,7 @@
 #include "../themes.h"
 #include "../theme.h"
 #include <QListWidgetItem>
+#include "../filedownloader.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,11 +21,14 @@ public:
 	~MainWindow();
 
     static void applyStyle(QScrollBar* scrollBar);
+    void closeEvent(QCloseEvent *event);
 
 public slots:
     //Importer un thème à partir d'un XML
     void import_theme_xml(QString path);
     void import_theme_src(QString path);
+    void import_theme_url(QUrl url);
+    void notification(QString notif);
 
     //On clique sur un thème
     void select_theme(Theme* t);
@@ -35,6 +39,7 @@ private:
 	Ui::MainWindow *ui;
     Themes* m_themes; //Liste de tout les thèmes
     Theme* m_selected_theme; //Thème sélectionné
+    FileDownloader* m_downloader;
 
     //On ajoute un thème à la liste (visuelle uniquement)
     void addTheme(Theme * t);
@@ -43,6 +48,7 @@ private slots:
     void on_btn_new_theme_clicked(); //On ajoute un thème vierge à la liste
     void on_btn_save_all_clicked(); //On enregistre tout
     void on_btn_import_theme_clicked(); //On importe un thème
+    void download_finish();
 
 
 signals:

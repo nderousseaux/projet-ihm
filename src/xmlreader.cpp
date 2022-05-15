@@ -7,33 +7,26 @@
 
 QString XMLReader::basePath = "saves/";
 
-QList<ColorPair*> XMLReader::importXML(QString path){
+Theme* XMLReader::importXML(QString xml){
     //Initialiser les variables
     QDomDocument xmlBOM;
-    QFile f(path);
-    QList<ColorPair*> colorsPair;
-
-    //On ouvre le fichier
-    if (!f.open(QIODevice::ReadOnly | QIODevice::Text)){
-        QMessageBox messageBox;
-        messageBox.critical(0,"Error","An error has occured !");
-    }
-    xmlBOM.setContent(&f);
-    f.close();
+    Theme *a = new Theme("a");
+    xmlBOM.setContent(xml);
 
     //On importe tout
     QDomElement root=xmlBOM.documentElement();
+    QString url = root.attribute("url", "");
+    a->setLink(url);
     QDomElement Component=root.firstChild().toElement();
     //Pour chaque élément
     while(!Component.isNull()){
         QString id = Component.attribute("id","noId");
         QColor source = ColorPair().fromRGBA(Component.attribute("source","#00000000"));
         QColor target = ColorPair().fromRGBA(Component.attribute("target","#00000000"));
-        colorsPair.append(new ColorPair(id, source, target));
+        a->addColorPair(new ColorPair(id, source, target));
         Component = Component.nextSibling().toElement();
     }
-
-    return colorsPair;
+    return a;
 };
 
 QList<ColorPair*> XMLReader::import(QString path){
@@ -62,6 +55,7 @@ QList<ColorPair*> XMLReader::import(QString path){
 void XMLReader::save(Theme * theme){
    QDomDocument xmlBOM;
    QDomElement colors = xmlBOM.createElement("colors");
+   colors.setAttribute("url",theme->getLink());
    foreach(ColorPair *c, theme->getColorsPair()){
         ColorPair co = *c;
         QDomElement colorPair = xmlBOM.createElement("color");

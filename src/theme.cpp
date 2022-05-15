@@ -17,9 +17,11 @@ Theme::Theme(QString name, QString file_path){
 }
 
 //Thème à partir d'un fichier externe/interne XML
-Theme::Theme(QString name, QString file_path, bool isInterne){
+Theme::Theme(QString name, QString xml, bool isInterne){
     m_name = name;
-    m_colorsPair = XMLReader::importXML(file_path);
+    Theme *t = XMLReader::importXML(xml);
+    m_colorsPair = t->getColorsPair();
+    m_link = t->getLink();
     m_isSave = isInterne;
     m_selected = false;
 }
@@ -27,11 +29,20 @@ Theme::Theme(QString name, QString file_path, bool isInterne){
 QList<ColorPair*> Theme::getColorsPair(){
     return m_colorsPair;
 }
+void Theme::setColorsPair(QList<ColorPair*> cp){
+    m_colorsPair=cp;
+}
 void Theme::addColorPair(ColorPair *colorPair){
     foreach(ColorPair *cp, m_colorsPair){
         if(cp->getSource() == colorPair->getSource()) return;
     }
     m_colorsPair.append(colorPair);
+}
+QString Theme::getLink(){
+    return m_link;
+}
+void Theme::setLink(QString link){
+    m_link = link;
 }
 QString Theme::getName(){
     return m_name;

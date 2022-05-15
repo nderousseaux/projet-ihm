@@ -7,6 +7,7 @@
 #include "../colorpair.h"
 #include "colorpairwidget.h"
 #include "mainwindow.h"
+#include <QInputDialog>
 
 //Constructeur
 SelectedThemeWidget::SelectedThemeWidget(QWidget *parent, Theme* theme) :QWidget(parent),ui(new Ui::SelectedThemeWidget){
@@ -49,6 +50,8 @@ void SelectedThemeWidget::update(Theme * t){
         ui->column_1->addStretch(1);
         ui->column_2->addStretch(1);
         ui->column_3->addStretch(1);
+
+        ui->update_btn->setVisible(!m_theme->getLink().isEmpty());
     }
 }
 
@@ -57,10 +60,13 @@ void SelectedThemeWidget::on_save_btn_clicked()
 {
     m_theme->save();
     emit updateTheme();
+
+    emit notification("Le thème \""+m_theme->getName()+"\" à été sauvegardé.");
 }
 
 //Suppression du thème
 void SelectedThemeWidget::on_delete_btn_clicked(){
+    emit notification("Le thème \""+m_theme->getName()+"\" à été supprimé.");
     emit deleteTheme(m_theme);
 }
 
@@ -102,7 +108,38 @@ void SelectedThemeWidget::clearLayout(QLayout* l){
     }
 }
 
-//Appliquer le thème
-void SelectedThemeWidget::on_apply_btn_clicked(){
+
+void SelectedThemeWidget::on_update_btn_clicked(){
+    QInputDialog *id = new QInputDialog();
+    this->setStyleSheet("QPushButton:hover{background-color: rgb(41, 105, 188); }");
+    bool ok;
+    QString text = id->getText(this, "URL", "Entrez l'url du thème", QLineEdit::Normal, m_theme->getLink(), &ok);
+
+    if(ok){
+        m_downloader= new FileDownloader(text, this);
+        connect(m_downloader, &FileDownloader::downloaded, this, &SelectedThemeWidget::download_finish);
+        emit notification("Mise à jour du thème \"" + m_theme->getName() + "\"...");
+    }
+}
+
+void SelectedThemeWidget::download_finish(){
+    try{
+        QString file = m_downloader->downloadedData();
+        if(file.isEmpty()){
+            throw std::invalid_argument("Invalid url");
+        }
+        Theme* t= new Theme("", file, true);
+
+        m_theme->setLink(m_downloader->getUrl().toString());
+        m_theme->setColorsPair(t->getColorsPair());
+        m_theme->setIsSave(false);
+        emit updateTheme();
+        update(m_theme);
+        emit notification("La mise à jour du thème est terminé");
+    }
+    catch(...){
+        emit notification("Impossible télécharger le thème");
+
+    }
 }
 

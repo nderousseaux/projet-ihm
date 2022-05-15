@@ -3,10 +3,12 @@
 #include <QScrollBar>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QCloseEvent>
 
 #include "importwindow.h"
 #include "themeitemwidget.h"
 #include "../xmlreader.h"
+#include "../filedownloader.h"
 #include "selectedthemewidget.h"
 
 //Constructeur
@@ -32,6 +34,14 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent),ui(new Ui::MainWindo
     connect(this, &MainWindow::new_theme_selected, st, &SelectedThemeWidget::update);
     connect(st, &SelectedThemeWidget::updateTheme, this, &MainWindow::selected_theme_update);
     connect(st, &SelectedThemeWidget::deleteTheme, this, &MainWindow::delete_theme);
+    connect(st, &SelectedThemeWidget::notification, this, &MainWindow::notification);
+
+    ui->statusBar->addPermanentWidget(ui->label_2);
+    ui->statusBar->addPermanentWidget(ui->progressBar);
+    ui->progressBar->setMaximum(0);
+    ui->progressBar->setMinimum(0);
+    ui->label_2->setVisible(false);
+    ui->progressBar->setVisible(false);
 }
 
 //Destructeur
@@ -41,14 +51,17 @@ MainWindow::~MainWindow(){
 
 //Importer un theme à partir d'un xml
 void MainWindow::import_theme_xml(QString path){
-    Theme* t = m_themes->newThemeFromXML(path);
+    Theme* t = m_themes->newThemeFromXMLPath(path);
     addTheme(t);
+
+    ui->statusBar->showMessage("L'import du fichier XML \""+t->getName()+"\" est terminé.", 5000);
 }
 
 //Importer un theme à partir d'un fichier source
 void MainWindow::import_theme_src(QString path){
     Theme* t = m_themes->newThemeFromFile(path);
     addTheme(t);
+    ui->statusBar->showMessage("L'import du thème venant du fichier \""+path+"\" est terminé.", 5000);
 }
 
 //On ajoute un thème à la liste (visuelle)
@@ -85,6 +98,8 @@ void MainWindow::on_btn_new_theme_clicked(){
 void MainWindow::on_btn_save_all_clicked(){
     m_themes->saveAll();
     emit update_themes_list();
+
+    ui->statusBar->showMessage("Tout les thèmes ont été sauvegardés.", 5000);
 }
 
 //Importer un nouveau thème
@@ -92,6 +107,7 @@ void MainWindow::on_btn_import_theme_clicked(){
     Import_window *im = new Import_window(this, m_themes);
     connect(im, &Import_window::addTheme, this, &MainWindow::import_theme_xml);
     connect(im, &Import_window::addThemeSrc, this, &MainWindow::import_theme_src);
+    connect(im, &Import_window::addThemeUrl, this, &MainWindow::import_theme_url);
     im->setModal(true);
     ui->centralwidget->setEnabled(false);
     im->exec();
@@ -129,5 +145,59 @@ void MainWindow::delete_theme(Theme *t){
     }
 
     emit new_theme_selected(nullptr);
+}
+
+void MainWindow::notification(QString notif){
+    ui->statusBar->showMessage(notif, 5000);
+}
+
+void MainWindow::import_theme_url(QUrl url){
+    m_downloader= new FileDownloader(url, this);
+    connect(m_downloader, &FileDownloader::downloaded, this, &MainWindow::download_finish);
+    ui->statusBar->showMessage("Le téléchargement du thème à commencé", 5000);
+    ui->label_2->setText("Téléchargement en cours...");
+    ui->label_2->setVisible(true);
+    ui->progressBar->setVisible(true);
+}
+
+void MainWindow::download_finish(){
+    try{
+        QString file = m_downloader->downloadedData();
+        if(file.isEmpty()){
+            throw std::invalid_argument("Invalid url");
+        }
+        Theme* t = m_themes->newThemeFromXML(file);
+        t->setLink(m_downloader->getUrl().toString());
+        addTheme(t);
+        ui->statusBar->showMessage("Le téléchargement du thème est terminé", 5000);
+    }
+    catch(...){
+        ui->statusBar->showMessage("Impossible télécharger le thème", 5000);
+
+    }
+    ui->label_2->setVisible(false);
+    ui->progressBar->setVisible(false);
+}
+
+void MainWindow::closeEvent (QCloseEvent *event){
+    bool allSave = true;
+    foreach(Theme *t, m_themes->getThemes()){
+        if(!t->getIsSave()){
+            allSave = false;
+            break;
+        }
+    }
+    if(!allSave){
+        QMessageBox::StandardButton resBtn = QMessageBox::question( this, "Sûr ?",tr("Vous avez encore des thèmes non sauvegardés, voulez-vous quiter ?\n"),QMessageBox::No | QMessageBox::Yes,QMessageBox::Yes);
+            if (resBtn != QMessageBox::Yes) {
+                event->ignore();
+            } else {
+                event->accept();
+            }
+    }
+    else{
+        event->accept();
+    }
+
 
 }

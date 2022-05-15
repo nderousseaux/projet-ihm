@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "../theme.h"
+#include "../filedownloader.h"
 
 namespace Ui {
 class SelectedThemeWidget;
@@ -15,15 +16,16 @@ class SelectedThemeWidget : public QWidget
 public:
     explicit SelectedThemeWidget(QWidget *parent = nullptr, Theme *theme = nullptr);
     ~SelectedThemeWidget();
+    FileDownloader* m_downloader;
 
 public slots:
     void update(Theme *t);
+    void download_finish();
 
 private slots:
     void on_save_btn_clicked();
     void on_delete_btn_clicked();
-
-    void on_apply_btn_clicked();
+    void on_update_btn_clicked();
 
 private:
     Ui::SelectedThemeWidget *ui;
@@ -36,6 +38,7 @@ private:
 signals:
     void updateTheme();
     void deleteTheme(Theme* t);
+    void notification(QString notif);
 };
 
 #endif // SELECTEDTHEMEWIDGET_H

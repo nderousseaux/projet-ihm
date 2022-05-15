@@ -12,9 +12,12 @@ class Theme{
 
         //Accesseurs
         QList<ColorPair*> getColorsPair();
+        void setColorsPair(QList<ColorPair*> cp);
         void addColorPair(ColorPair *colorPair);
         QString getName();
         void setName(QString name);
+        QString getLink();
+        void setLink(QString link);
         bool getIsSave();
         void setIsSave(bool save);
         bool getSelected();
@@ -28,6 +31,7 @@ class Theme{
     private:
         QList<ColorPair*> m_colorsPair;
         QString m_name;
+        QString m_link;
         bool m_isSave;
         bool m_selected;
 };

@@ -1,7 +1,3 @@
-Tout le système de "en ligne"
-Tout le système de notifs
-Un système de drag/drop
-"Désactiver" les boutons qui ne servirons pas
 Écrire le readme
 
 
@@ -10,3 +6,4 @@ Système de modification des couleurs
 Alerte si il y a des thèmes non sauvegardés au moment de fermer
 Appliquer le thème
 Système de recherhce
+Un système de drag/drop

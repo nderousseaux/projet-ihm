@@ -113,7 +113,7 @@
 border-bottom:1px solid rgb(205,205,205)</string>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Themes List&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Liste des thèmes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="margin">
              <number>15</number>
@@ -157,7 +157,7 @@ border-bottom:1px solid rgb(205,205,205)
                <x>0</x>
                <y>0</y>
                <width>167</width>
-               <height>421</height>
+               <height>400</height>
               </rect>
              </property>
              <property name="styleSheet">
@@ -226,7 +226,7 @@ QPushButton:hover{
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string>New theme</string>
+                <string>Nouveau thème</string>
                </property>
               </widget>
              </item>
@@ -239,7 +239,7 @@ QPushButton:hover{
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>Import theme</string>
+                <string>Importer un thème</string>
                </property>
               </widget>
              </item>
@@ -249,7 +249,7 @@ QPushButton:hover{
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string>Save all</string>
+                <string>Tout sauvegarder</string>
                </property>
               </widget>
              </item>
@@ -280,6 +280,20 @@ QPushButton:hover{
           <property name="bottomMargin">
            <number>0</number>
           </property>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QProgressBar" name="progressBar">
+            <property name="value">
+             <number>24</number>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -288,6 +302,7 @@ QPushButton:hover{
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionr">
    <property name="text">
     <string>r</string>

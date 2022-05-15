@@ -14,7 +14,7 @@ using namespace std;
 class XMLReader{
     public:
         //Méthode de classes
-        static QList<ColorPair*> importXML(QString path);
+        static Theme* importXML(QString path);
         static QList<ColorPair*> import(QString path);
         static void save(Theme * theme);
         static void createSavePath();
