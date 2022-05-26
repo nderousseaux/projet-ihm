@@ -1,0 +1,11 @@
+Quelle belle ceuillette nous fîmes !
+Des #11223344
+Quelques #55667788
+Et même des #0080ffff
+
+Ce texte, lu avec l'application, permet de créer le thème dont les couleurs source sont :
+#11223344
+#55667788
+#0080ffff
+Il est ensuite possible de modifier les couleurs target et appliquer le thème modifié sur ce fichier-ci, pour changer les couleurs s'affichant.
+(sans les doublons)
